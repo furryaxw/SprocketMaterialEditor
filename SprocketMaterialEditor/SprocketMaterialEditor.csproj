@@ -1,0 +1,87 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <AssemblyName>SprocketMaterialEditor</AssemblyName>
+    <RootNamespace>Sprocket.MaterialEditor</RootNamespace>
+    <ImplicitUsings>disable</ImplicitUsings>
+    <Nullable>disable</Nullable>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <PlatformTarget>x64</PlatformTarget>
+    <Version>1.8.24</Version>
+    <AssemblyVersion>1.8.24.0</AssemblyVersion>
+    <FileVersion>1.8.24.0</FileVersion>
+    <Authors>Sectumsempra</Authors>
+    <Description>In-game material editor for Sprocket vehicle blueprints.</Description>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <PackageProjectUrl>https://github.com/furryaxw/SprocketMaterialEditor</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/furryaxw/SprocketMaterialEditor.git</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <SprocketGameRoot Condition="'$(SprocketGameRoot)' == '' and '$(SPROCKET_GAME_ROOT)' != ''">$(SPROCKET_GAME_ROOT)</SprocketGameRoot>
+    <SprocketGameRoot Condition="'$(SprocketGameRoot)' == ''">$([System.IO.Path]::GetFullPath('$(MSBuildProjectDirectory)\..\..\..'))</SprocketGameRoot>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Reference Include="0Harmony">
+      <HintPath>$(SprocketGameRoot)\MelonLoader\net6\0Harmony.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="Il2CppInterop.Runtime">
+      <HintPath>$(SprocketGameRoot)\MelonLoader\net6\Il2CppInterop.Runtime.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="Il2Cppmscorlib">
+      <HintPath>$(SprocketGameRoot)\MelonLoader\Il2CppAssemblies\Il2Cppmscorlib.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="MelonLoader">
+      <HintPath>$(SprocketGameRoot)\MelonLoader\net6\MelonLoader.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="UnityEngine.CoreModule">
+      <HintPath>$(SprocketGameRoot)\MelonLoader\Il2CppAssemblies\UnityEngine.CoreModule.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="UnityEngine.IMGUIModule">
+      <HintPath>$(SprocketGameRoot)\MelonLoader\Il2CppAssemblies\UnityEngine.IMGUIModule.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="UnityEngine.TextRenderingModule">
+      <HintPath>$(SprocketGameRoot)\MelonLoader\Il2CppAssemblies\UnityEngine.TextRenderingModule.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="Il2CppSprocket.Core">
+      <HintPath>$(SprocketGameRoot)\MelonLoader\Il2CppAssemblies\Il2CppSprocket.Core.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="Il2CppSprocket.Blueprints">
+      <HintPath>$(SprocketGameRoot)\MelonLoader\Il2CppAssemblies\Il2CppSprocket.Blueprints.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="Il2CppSprocket.VehicleDesigner.Access">
+      <HintPath>$(SprocketGameRoot)\MelonLoader\Il2CppAssemblies\Il2CppSprocket.VehicleDesigner.Access.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="Il2CppSprocket.VehicleDesigner">
+      <HintPath>$(SprocketGameRoot)\MelonLoader\Il2CppAssemblies\Il2CppSprocket.VehicleDesigner.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="Il2CppSprocket.VehicleFramework">
+      <HintPath>$(SprocketGameRoot)\MelonLoader\Il2CppAssemblies\Il2CppSprocket.VehicleFramework.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="Il2CppSprocket.Vehicles">
+      <HintPath>$(SprocketGameRoot)\MelonLoader\Il2CppAssemblies\Il2CppSprocket.Vehicles.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="Il2CppSprocket.PlateStructureDesign">
+      <HintPath>$(SprocketGameRoot)\MelonLoader\Il2CppAssemblies\Il2CppSprocket.PlateStructureDesign.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+  </ItemGroup>
+
+  <Target Name="PostBuild" AfterTargets="PostBuildEvent" Condition="'$(SkipModDeploy)' != 'true'">
+    <Copy SourceFiles="$(TargetPath)" DestinationFolder="$(SprocketGameRoot)\Mods" />
+  </Target>
+
+</Project>
