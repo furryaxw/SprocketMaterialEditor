@@ -13,7 +13,14 @@ using Il2CppSprocket.Vehicles.PlateStructures;
 using Il2CppSprocket.PlateStructures.Blueprints;
 using Il2CppSprocket.Vehicles.Selection;
 
-[assembly: MelonInfo(typeof(Sprocket.MaterialEditor.MaterialEditorMod), "Sec's Material Editor", "1.8.24", "Sec")]
+[assembly: MelonInfo(typeof(Sprocket.MaterialEditor.MaterialEditorMod), "Sec's Material Editor", "1.8.25", "Sec")]
+[assembly: System.Reflection.AssemblyMetadata("Sprocket.Mod.Id", "sectumsempra.sprocket-material-editor")]
+[assembly: System.Reflection.AssemblyMetadata("Sprocket.Mod.DisplayName", "Sec's Material Editor")]
+[assembly: System.Reflection.AssemblyMetadata("Sprocket.Mod.Description", "In-game editor for changing armour materials on saved Sprocket vehicle blueprints.")]
+[assembly: System.Reflection.AssemblyMetadata("Sprocket.Mod.Authors", "Sectumsempra")]
+[assembly: System.Reflection.AssemblyMetadata("Sprocket.Mod.Repository", "furryaxw/SprocketMaterialEditor")]
+[assembly: System.Reflection.AssemblyMetadata("Sprocket.Mod.Category", "utility")]
+[assembly: System.Reflection.AssemblyMetadata("Sprocket.Mod.License", "MIT")]
 [assembly: MelonColor(0, 255, 255, 255)]
 
 namespace Sprocket.MaterialEditor
